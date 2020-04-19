@@ -2,7 +2,7 @@
 Project for Full Stack Open 2020 - https://fullstackopen.com/en/#course-contents
 
 # progress
-- [ ] Part 0 - Fundamentals of Web apps
+- [x] Part 0 - Fundamentals of Web apps
 - [ ] Part 1
 - [ ] Part 2
 - [ ] Part 3
