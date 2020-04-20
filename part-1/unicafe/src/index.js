@@ -32,6 +32,9 @@ const Statistics = ({good, neutral, bad}) => {
 	if (all !== 0) {
 	  return(
 			<div>
+				<h1>
+					Statistics
+				</h1>
 				<table>
 					<tbody>
 						<Statistic text='good' value={good} />	
@@ -47,6 +50,9 @@ const Statistics = ({good, neutral, bad}) => {
 	} else {
 		return(
 			<div>
+				<h1>
+					statistics
+				</h1>
 				<p> No feedback given </p>
 			</div> 	
 		)
