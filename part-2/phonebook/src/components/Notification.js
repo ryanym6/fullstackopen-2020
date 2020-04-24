@@ -17,7 +17,6 @@ const Notification = ({name, status}) => {
     backgroundColor: 'lightgrey',
     borderStyle: 'solid',
 		border: '5px solid red',
-    border: 1,
     padding: 10,
     marginBottom: 10,
     borderRadius: 5
