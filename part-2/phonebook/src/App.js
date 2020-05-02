@@ -42,18 +42,16 @@ const App = () => {
     if (exist === undefined ){
       phonebookService
         .create(person)
-        .then(newPerson => {setPersons(persons.concat(newPerson));
-                            setStatus(0);
-                            setMsgName(person.name)})
+        .then(newPerson => {
+          setPersons(persons.concat(newPerson))
+          setStatus(0)
+          setMsgName(person.name)
 
-      setNewName('')
-      setNewNumber('')
-
-      setTimeout(() => {
-        setStatus(-1);
-        setMsgName("")
-      }, 3000)
-
+        })
+        .catch(err => {
+            setStatus(1)
+            setMsgName(err.response.data.error)
+        })
 
     } else {
       const result = window.confirm(`${person.name} is already added to phonebook, replace old number with a new one?`)
@@ -62,25 +60,42 @@ const App = () => {
           .update(exist.id, person)
           .then(updatedPerson => {setPersons(persons.map(p => p.id === updatedPerson.id? updatedPerson: p))})
           .catch(err => {
+            console.log(err)
             setStatus(1)
-            setMsgName(person.name)
+            setMsgName(err.response.data.error)
           })
 
-        setTimeout(() => {
-          setStatus(-1);
-          setMsgName("")
-        }, 3000)
 
       }
     }
+
+    setNewName('')
+    setNewNumber('')
+
+    setTimeout(() => {
+      setStatus(-1);
+      setMsgName("")
+    }, 3000)
   }
 
   const deletePerson = (person) => {
     const result = window.confirm(`Delete ${person.name}`)
     if (result) {
       phonebookService
-      .deleteById(person.id)
-      .then(() => {setPersons(persons.filter(p => p.id !== person.id))})
+        .deleteById(person.id)
+        .then(() => {setPersons(persons.filter(p => p.id !== person.id))})
+        .catch(err => {
+            setStatus(2)
+            setMsgName(person.name)
+      })
+      
+    setNewName('')
+    setNewNumber('')
+
+    setTimeout(() => {
+      setStatus(-1);
+      setMsgName("")
+    }, 3000)
     }
 
   }

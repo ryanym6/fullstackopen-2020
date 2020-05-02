@@ -24,8 +24,12 @@ const Notification = ({name, status}) => {
 
   const successMsg = `Added ${name}`
   const failureMsg = `Information of ${name} has already been removed from server`
-
+  const errorMsg = `${name}`
   if (status === 1){
+  	return (
+  		<p style={failureStyle}> {errorMsg} </p>
+  	)
+  } else if (status === 2) {
   	return (
   		<p style={failureStyle}> {failureMsg} </p>
   	)
