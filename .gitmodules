@@ -1,0 +1,3 @@
+[submodule "part-3-new"]
+	path = part-3
+	url = git@github.com:ryanym/fullstackopen-2020-part-3.git
